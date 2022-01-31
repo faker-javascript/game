@@ -3,10 +3,11 @@ interface Options {
 }
 type Items = Record<string, string>;
 declare class Game {
-    titles: Items;
-    genres: Items;
-    platforms: Items;
-    defaultLocale: string;
+    _titles: Items;
+    _genres: Items;
+    _platforms: Items;
+    _defaultLocale: string;
+    _options?: Options;
     title(): string;
     genre(): string;
     platform(): string;

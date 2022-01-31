@@ -3,20 +3,20 @@ import fs from 'node:fs';
 import {loadJsonFileSync} from 'load-json-file';
 
 class Game {
-    titles = {};
-    genres = {};
-    platforms = {};
-    defaultLocale = 'en_US';
-    options = {};
+    _titles = {};
+    _genres = {};
+    _platforms = {};
+    _defaultLocale = 'en_US';
+    _options = {};
 
     constructor(options) {
-        this.options = options || {};
-        const titleFilePath = `./locales/${this.options.locale || this.defaultLocale}/title.json`;
-        const platformFilePath = `./locales/${this.options.locale || this.defaultLocale}/platform.json`;
-        const genreFilePath = `./locales/${this.options.locale || this.defaultLocale}/genre.json`;
-        this.titles = fs.existsSync(path.resolve(titleFilePath)) ? loadJsonFileSync(titleFilePath) : loadJsonFileSync(path.resolve('node_modules/@fakerjs/game/', titleFilePath));
-        this.platforms = fs.existsSync(path.resolve(platformFilePath)) ? loadJsonFileSync(platformFilePath) : loadJsonFileSync(path.resolve('node_modules/@fakerjs/game/', platformFilePath));
-        this.genres = fs.existsSync(path.resolve(genreFilePath)) ? loadJsonFileSync(genreFilePath) : loadJsonFileSync(path.resolve('node_modules/@fakerjs/game/', genreFilePath));
+        this._options = options || {};
+        const titleFilePath = `./locales/${this._options.locale || this._defaultLocale}/title.json`;
+        const platformFilePath = `./locales/${this._options.locale || this._defaultLocale}/platform.json`;
+        const genreFilePath = `./locales/${this._options.locale || this._defaultLocale}/genre.json`;
+        this._titles = fs.existsSync(path.resolve(titleFilePath)) ? loadJsonFileSync(titleFilePath) : loadJsonFileSync(path.resolve('node_modules/@fakerjs/game/', titleFilePath));
+        this._platforms = fs.existsSync(path.resolve(platformFilePath)) ? loadJsonFileSync(platformFilePath) : loadJsonFileSync(path.resolve('node_modules/@fakerjs/game/', platformFilePath));
+        this._genres = fs.existsSync(path.resolve(genreFilePath)) ? loadJsonFileSync(genreFilePath) : loadJsonFileSync(path.resolve('node_modules/@fakerjs/game/', genreFilePath));
     }
 
     _selectRandom(items) {
@@ -24,15 +24,15 @@ class Game {
     }
 
     title() {
-        return this._selectRandom(this.titles);
+        return this._selectRandom(this._titles);
     }
 
     genre() {
-        return this._selectRandom(this.genres);
+        return this._selectRandom(this._genres);
     }
 
     platform() {
-        return this._selectRandom(this.platforms);
+        return this._selectRandom(this._platforms);
     }
 }
 
