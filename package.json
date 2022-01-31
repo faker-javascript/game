@@ -1,6 +1,6 @@
 {
   "name": "@fakerjs/game",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Game package provides functionality to generate a fake game value.",
   "license": "MIT",
   "repository": "faker-javascript/game",
